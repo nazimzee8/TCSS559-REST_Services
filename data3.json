@@ -1,0 +1,17 @@
+{
+"Alternatives":  ["Honda Civic", "Toyota Camry", "Honda Accord", "Toyota Corolla", "Chevrolet Equinox", "Honda Odyssey", "Honda Ridgeline", "Nissan Altima", "Hyundai Accent", "Audi A6"],
+"Attributes": ["Price", "Gas", "Efficiency", "Aesthetic", "Miles", "Top Speed", "Space"],
+"Weights": [0.10, 0.20, 0.25, 0.05, 0.15, 0.25],
+"Entries": [[35000, 40, 18, 3, 200000, 160, 4],
+		[20000, 20, 25, 5, 130000, 120, 4],
+		[23000, 30, 20, 2, 175000, 160, 8],
+		[32000, 32, 24, 3, 115000, 120, 5],
+		[32000, 21, 32, 1, 160000, 180, 6],
+		[52000, 35, 18, 5, 55000, 140, 4],
+		[38000, 32, 28, 2, 85000, 130, 8],
+		[14000, 27, 24, 5, 15000, 200, 6],
+		[19000, 22, 20, 1, 0, 120, 8],
+		[37000, 45, 24, 5, 140000, 200, 7]],
+"Type": ["True", "True", "True", "True", "True", "True", "True"],
+"Classification":  ["Minimum", "Maximum", "Maximum", "Maximum", "Minimum", "Maximum", "Maximum"]
+}

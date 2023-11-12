@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="StudentService" targetNamespace="http://tcss559.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tcss559.net/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:message name="updateCredits">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStatus">
+  </wsdl:message>
+  <wsdl:message name="updateStatusResponse">
+  </wsdl:message>
+  <wsdl:message name="setGradResponse">
+  </wsdl:message>
+  <wsdl:message name="updateGPA">
+    <wsdl:part name="arg0" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:double">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCreditsResponse">
+  </wsdl:message>
+  <wsdl:message name="toStringResponse">
+    <wsdl:part name="return" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateGPAResponse">
+  </wsdl:message>
+  <wsdl:message name="setGrad">
+  </wsdl:message>
+  <wsdl:message name="toString">
+  </wsdl:message>
+  <wsdl:portType name="Student">
+    <wsdl:operation name="updateCredits">
+      <wsdl:input name="updateCredits" message="tns:updateCredits">
+    </wsdl:input>
+      <wsdl:output name="updateCreditsResponse" message="tns:updateCreditsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateGPA">
+      <wsdl:input name="updateGPA" message="tns:updateGPA">
+    </wsdl:input>
+      <wsdl:output name="updateGPAResponse" message="tns:updateGPAResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatus">
+      <wsdl:input name="updateStatus" message="tns:updateStatus">
+    </wsdl:input>
+      <wsdl:output name="updateStatusResponse" message="tns:updateStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setGrad">
+      <wsdl:input name="setGrad" message="tns:setGrad">
+    </wsdl:input>
+      <wsdl:output name="setGradResponse" message="tns:setGradResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="toString">
+      <wsdl:input name="toString" message="tns:toString">
+    </wsdl:input>
+      <wsdl:output name="toStringResponse" message="tns:toStringResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StudentServiceSoapBinding" type="tns:Student">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="updateCredits">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="updateCredits">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:input>
+      <wsdl:output name="updateCreditsResponse">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateGPA">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="updateGPA">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:input>
+      <wsdl:output name="updateGPAResponse">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatus">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="updateStatus">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:input>
+      <wsdl:output name="updateStatusResponse">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setGrad">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="setGrad">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:input>
+      <wsdl:output name="setGradResponse">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="toString">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="toString">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:input>
+      <wsdl:output name="toStringResponse">
+        <soap:body use="literal" namespace="http://tcss559.net/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StudentService">
+    <wsdl:port name="StudentPort" binding="tns:StudentServiceSoapBinding">
+      <soap:address location="http://localhost:8080/Quiz1WSFinal/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<campus>
+		<student studentID="11111">
+			<name>Nazim Zerrouki</name>
+			<grad>true</grad>
+			<credits>190</credits>
+			<gpa>3.75</gpa>
+			<status>Senior</status>
+		</student>
+		<student studentID = "11112">
+			<name>Jaden Smith</name>
+			<grad>false</grad>
+			<credits>75</credits>
+			<gpa>3.95</gpa>
+			<status>Sophomore</status>
+		</student>
+		<student studentID = "13576">
+			<name>Johnny Test</name>
+			<grad>false</grad>
+			<credits>15</credits>
+			<gpa>3.15</gpa>
+			<status>Freshman</status>
+		</student>
+		<student studentID = "11444">
+			<name>John Greene</name>
+			<grad>false</grad>
+			<credits>145</credits>
+			<gpa>4.0</gpa>
+			<status>Senior</status>
+		</student>
+		<student studentID = "47372">
+			<name>Devin Flavors</name>
+			<grad>false</grad>
+			<credits>115</credits>
+			<gpa>3.57</gpa>
+			<status>Junior</status>
+		</student>
+</campus>

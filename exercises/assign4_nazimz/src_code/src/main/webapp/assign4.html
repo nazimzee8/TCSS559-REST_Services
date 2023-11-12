@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>TOPSIS API</title>
+</head>
+
+<style>
+.body {
+	margin-right: 25%; 
+	margin-left: 7%;
+}
+
+.box {
+	height: 50px; 
+	display: table-cell; 
+	width: 400px; 
+	background-color: #d9d9d9; 
+	vertical-align: middle; 
+	font-family: calibri;
+	padding-left: 10px;
+}
+
+.feature {
+	display: inline-block;
+	font-family: cambria;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #d9d9d9;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.feature p {
+	font-family: cambria;
+	font-size: 1rem;
+}
+
+.sub {
+	margin-left: 25px;
+	opacity: 0.5;
+}
+
+.type {
+	margin-left: 25px;
+	opacity: 0.5;
+}
+
+.explain {
+	margin-left: 25px;
+}
+
+.input {
+	display: block; 
+	word-wrap: break-word; 
+	max-width: 400px; 
+	text-overflow: ellipsis; 
+	font-size: 0.85rem;
+}
+
+</style>
+<body>
+	<div class="Introduction" style="margin-right: 25%; margin-left: 7%; font-family: Times New Roman;">
+		<h1 style="font-size:1.6rem; font-family: cambria;"> Integration of CRITIC and ENTROPY in TOPSIS </h1>
+		<hr>
+		<br>
+		This Topsis API allows users to process input data in a JSON format to to perform a Multi Criteria Decision
+		Analysis formula known as The Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS). Many
+		solutions enable users to provide their own subjective weights which influences the output of the model. However, this
+		API enables mathematical formulas to objectively compute the weights using the Shanon Entropy method and Criteria
+		Importance Through Intercriteria Correlation (CRITIC). Through the integration of a complete RESTful API, users will 
+		be able to process their own input files in a JSON format (as specified by this API). The input file is then sent to 
+		a RESTful web service and stored in an SQL database on the Cloud via GCP. From there, TOPSIS performance scores are 
+		computed using both Entropy and Critic methods. Invoking the specified end points will enable users to retrieve the results.
+		However, this API enables users to input their own perception of what the ideal best and ideal worst value for each criteria is.
+		As such, the web service must be reset to invoke another endpoint.
+		<br></br>
+		<h1 style="font-size:1.6rem; font-family: cambria;"> Initiate the TOPSIS RESTful API </h1>
+		<h2 style="font-size: 1.3rem;"> How to generate the desired output </h2>
+		<h3 style="font-size: 1rem; margin-left: 1%"><b>POST REQUEST</b></h3>
+		<hr style="margin-left: auto;">
+		
+		<h3 style="font-size: 1rem;"> Upload the file on the web server</h3>
+		<div class="box" style="height: 50px; display: table-cell; width: 400px; background-color: #d9d9d9; vertical-align: middle; font-family: calibri">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/file/upload/assign4.jsp </h3>
+		</div>
+		<h3 style="font-size: 1rem;"> Example of File Upload </h3>
+		<br>
+		<img style="width: 300px" src="C:\Users\nazimz\Documents\TCSS559\Quiz2_1373533\quiz2_upload.png"></img>
+		<h3 style="font-size: 1rem;"> POST REQUEST after File Upload </h3>
+		<div class="box" style="height: 50px; display: table-cell; width: 400px; background-color: #d9d9d9; vertical-align: middle; font-family: calibri">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/file/upload </h3>
+		</div>
+		
+		<br>
+		<h3 style="font-size: 1.2rem;"><b>Process Data in Database</b></h3>
+		<hr style="margin-left: auto;"> 
+		<h3 style="font-size: 1rem;"> Submit the JSON data to the Cloud MySQL Database </h3>
+		This is a direct invocation of the web server assuming that the dataset
+		has been uploaded successfully onto the web server via {POST}. Endpoint specification is provided to clarify 
+		what file is used for the SQL database.
+		<br></br>
+		
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/{filename}</h3>
+		</div>
+		<br>
+		With no data specified, the default json file will be selected with the largest matrix as shown below.
+		<br></br>
+		
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/default </h3>
+		</div>
+	</div>
+	
+	<div class="Parameters" style="font-family: sans serif; margin-right: 25%; margin-left: 7%;">
+		<h3 style="font-size: 1rem;"><b>Parameters</b></h3>
+		<hr>
+		<table class="param_api">
+			<tr> 
+				<th colspan="3"></th>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">filename</p></div></td>
+				<td><span class="sub">required</span></td>
+				<td><div class="explain"> The designated file to be sent to the Cloud once present in the web server.
+				Only the file name is required; the uploaded path is assumed by the web server.
+				The default endpoint selects the largest Json dataset in the correct format. Otherwise, the algorithm fails. </div></td>
+			</tr>
+		</table>
+	</div>
+	
+	<br></br>
+	<div class="Database" style="margin-right: 25%; margin-left: 7%;">
+		<hr style="margin-left: auto;">
+		<h3 style="font-size: 1.2rem;"><b>Database Invocations</b></h3>
+		This API processes data locally by interacting with a SQL Database in the Cloud. As such, there
+		is added functionality for adding, removing, and updating data as necessary.
+		<h3 style="font-size: 1rem;">Retrieve Contents of the MySQL Database</h3>
+		This will display all table contents within the database in a JSON format.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/test </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Add a Record to the MySQL Database</h3>
+		This will add an alternative to the database with the data pertaining to the entry
+		being integrated in headers that can be added to the HTTP request via Postman. 
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/add </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Update a Record in the MySQL Database</h3>
+		This will update a record's price and mileage within the database via header based on primary key.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/update/{alternatve_name} </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Delete a Record in the MySQL Database</h3>
+		Deletes an alternative within the database via primary key.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/delete/{alternatve_name} </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Delete all Records in the MySQL Database</h3>
+		Deletes all alternatives with the database for a clean slate.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/delete </h3>
+		</div>
+	</div>
+	
+	<div class="Example" style="margin-right: 25%; margin-left: 7%;">
+		<h3 style="font-size: 1rem;"><b>Examples of Database Invocations</b></h3>
+		<hr>
+		<div class="box"><h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/data.json</h3></div>
+		<br>
+		<div class="box"><h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/delete/Honda%20Odyssey </h3></div>
+		<br>
+		<div class="box"><h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/update/Honda%20Odyssey</h3></div>
+	</div>
+	<br>
+	<div class="Parameters" style="font-family: sans serif; margin-right: 25%; margin-left: 7%;">
+		<h3 style="font-size: 1rem;"><b>Headers</b></h3>
+		<hr>
+		<table class="param_api">
+			<tr> 
+				<th colspan="4"></th>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">alternative_name</p></div></td>
+				<td><span class="sub">required</span></td>
+				<td><span class="type"> String </span>
+				<td><div class="explain"> The name and primary key of the record to be sent via header request. Mandatory for add operation. </div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">price</p></div></td>
+				<td><span class="sub">required</span></td>
+				<td><span class="type"> double </span>
+				<td><div class="explain"> The price of the record to be sent via header request. Required for update and add operation if the column
+				is present within the database. </div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">gas</p></div></td>
+				<td><span class="sub">optional</span></td>
+				<td><span class="type"> double </span>
+				<td><div class="explain"> Only used for add operation. Only necessary if column is present in database. </div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">efficiency</p></div></td>
+				<td><span class="sub">optional</span></td>
+				<td><span class="type"> double </span>
+				<td><div class="explain"> Only used for add operation. Only necessary if column is present in database. </div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">aesthetic</p></div></td>
+				<td><span class="sub">optional</span></td>
+				<td><span class="type"> double </span>
+				<td><div class="explain"> Only used for add operation. Only necessary if column is present in database. </div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">miles</p></div></td>
+				<td><span class="sub">optional</span></td>
+				<td><span class="type"> double </span>
+				<td><div class="explain">Used for both add and update operation. Only necessary if column is present in database,
+				but assume it is necessary for updating a record. </div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">top_speed</p></div></td>
+				<td><span class="sub">optional</span></td>
+				<td><span class="type"> double </span>
+				<td><div class="explain"> Only used for add operation. Only necessary if column is present in database. </div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">space</p></div></td>
+				<td><span class="sub">optional</span></td>
+				<td><span class="type"> double </span>
+				<td><div class="explain"> Only used for add operation. Only necessary if column is present in database. </div></td>
+			</tr>
+		</table>
+		<br>
+		<h3 style="font-size: 1rem;"> Example of Header Request </h3>
+		Any parameters not part of the Database should be left untouched.
+		<br></br>
+		<img style="width: 400px; height: 400px;" src="C:\Users\nazimz\Documents\TCSS559\Assign4_1373533\headers.png"></img>
+	</div>
+	
+	<div class="Endpoints" style="margin-right: 25%; margin-left: 7%;">
+		<hr style="margin-left: auto;">
+		<h3 style="font-size: 1.2rem;"><b>Retrieve Critic and Entropy Weights</b></h3>
+		This API uses Critic and Entropy algorithms to compute the weights for TOPSIS. As such,
+		establishing endpoints that display these contents are provided.
+		<h3 style="font-size: 1rem;">Retrieve Critic Weights</h3>
+		This will display the weights computed by CRITIC that are processed by TOPSIS.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/critic </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Retrieve Entropy Weights</h3>
+		This will display the weights computed by Entropy that are processed by TOPSIS.
+		<br></br>
+		
+		<hr>
+		<h3 style="font-size: 1.2rem;"><b>Invoke Endpoints For TOPSIS Performance Scores</b></h3>
+		This contains all endpoints that displays the results by CRITIC and Entropy as well as the 
+		correlation coefficient between these two methods.
+		<h3 style="font-size: 1rem;">Retrieve All TOPSIS Results</h3>
+		This will display the results of both methods as well as the correlation coefficient.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/topsis </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Retrieve CRITIC Results</h3>
+		This will display the results exclusively using the weights computed by CRITIC.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/topsis/critic </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Retrieve Entropy Results</h3>
+		This will display the results exclusively using the weights computed using Entropy.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/topsis/entropy </h3>
+		</div>
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/topsis </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Retrieve Correlation Coefficients</h3>
+		This will display the correlation coefficients between the results computed using both methods.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/topsis/correlation </h3>
+		</div>
+	</div>
+	
+	<div class="Composite" style="margin-right: 25%; margin-left: 7%;">
+		<hr>
+		<h3 style="font-size: 1.2rem;"><b>Retrieve All Results on Web Server</b></h3>
+		These endpoints allow the user to access every performance score on the composite RESTful server.
+		<h3 style="font-size: 1rem;">Retrieve All TOPSIS Results</h3>
+		This will display the results of both methods as well as the correlation coefficient on the main server.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/process </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Retrieve CRITIC Results</h3>
+		This will display the performance score exclusively from CRITIC on the main server.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/process/critic </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Retrieve Entropy Results</h3>
+		This will display the performance score exclusively from Entropy on the main server.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/process/entropy </h3>
+		</div>
+		<h3 style="font-size: 1rem;">Retrieve Correlation Coefficient</h3>
+		This will display the correlation coefficient of the results computed by both methods on the main server.
+		<br></br>
+		<div class="box">
+			<h3 style="font-size: 0.85rem;"> http://localhost:8080/Assign4F/process/correlation </h3>
+		</div>
+		<hr>
+	</div>
+	
+	<div class=JSON" style="margin-right: 25%; margin-left: 7%;">
+		<h1 style="font-size:1.6rem; font-family: cambria;"> JSON </h1>
+		<p>It is imperative that the input data is formatted properly so that the web server
+		can extract the data necessary to execute the algorithms correctly.</p>
+		<div class="box"><h3 style="font-size: 1rem;">Example of JSON File Upload</h3></div>
+		<div style="width: 30%;">
+			<pre>
+			<code class="input">
+{
+"Alternatives":  ["Honda Civic", "Toyota Camry", "Honda Accord", "Toyota Corolla", "Chevrolet Equinox"],
+"Attributes": ["Price", "Gas", "Efficiency", "Aesthetics", "Miles"],
+"Entries": [[10000, 30, 30, 1, 100000],
+		[15000, 40, 22, 2, 125000],
+		[18000, 23, 17, 3, 80000],
+		[22000, 27, 27, 4, 135000],
+		[33000, 32, 23, 5, 145000]],
+"Type": ["False", "False", "False", "False", "False"],
+"Classification":  ["Minimum", "Maximum", "Maximum", "Maximum", "Minimum"]
+}
+			</code>
+			</pre>
+		</div>
+	</div>
+	<div class="Fields" style="margin-right: 25%; margin-left: 7%;">
+		<h3 style="font-size: 1rem;">Fields in Input Data</h3>
+		<hr>
+		<table>
+			<tr> 
+				<th colspan="2"></th>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">Alternatives</div></td>
+				<td><div class="explain">The categorical decisions that are evaluated by the algorithm(s). 
+				The number of decisions must be the same as the number of entries.</div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">Attributes</div></td>
+				<td><div class="explain"></div>The number of features that each specific alternative have.
+				Each attribute represents a value found in each entry. Each attribute must be a non-negative double value. </td>
+			</tr>
+				<td><div class="feature"><p style="font-family: cambria;">Entries</div></td>
+				<td><div class="explain"></div>An array values for each attribute. Each alternative
+				must have one entry.</td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">Type</div></td>
+				<td><div class="explain">A modifier in determining whether an attribute is evaluated
+				by the algorithm(s). The type only has two values, "True" and "False". True indicates
+				that this attribute is included and False means the attribute is excluded.
+				The number of types must be equal to the number of attributes.</div></td>
+			</tr>
+			<tr>
+				<td><div class="feature"><p style="font-family: cambria;">Classification</div></td>
+				<td><div class="explain">Exclusive to Topsis. This is a modifier that determines whether the ideal value
+				for a specific attribute contains the highest or lowest value. Each classifier has two attributes, "Maximum"
+				and "Minimum". Maximum indicates the ideal best is the minimum value and Minimum indicates the ideal best
+				is the minimum value. The number of classifications must be equal to the number of types.</div></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

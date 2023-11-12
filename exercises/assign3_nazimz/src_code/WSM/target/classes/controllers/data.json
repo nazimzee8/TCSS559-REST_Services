@@ -1,0 +1,16 @@
+{
+   "Alternatives":{
+      "First Alternative:":"Toyota Camry",
+      "Second Alternative:":"Chevrolet Equinox",
+      "Third Alternative:":"Honda Civic",
+      "Fourth Alternative:":"Toyota Corolla",
+      "Fifth Alternative:":"Honda Accord"
+   },
+   "WSM Scores: ":{
+      "First WSM Score: ":0.153639301874596,
+      "Second WSM Score: ":0.1493679523091288,
+      "Third WSM Score: ":0.13199238669826904,
+      "Fourth WSM Score: ":0.11387703799468507,
+      "Fifth WSM Score: ":0.10112332112332112
+   }
+}

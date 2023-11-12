@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="UniversityService" targetNamespace="http://tcss559.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tcss559.net/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://tcss559.net/" schemaLocation="university_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="searchStudent">
+    <wsdl:part name="parameters" element="tns:searchStudent">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStudentResponse">
+    <wsdl:part name="parameters" element="tns:updateStudentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateStudent">
+    <wsdl:part name="parameters" element="tns:updateStudent">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addStudent">
+    <wsdl:part name="parameters" element="tns:addStudent">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remStudentByIDResponse">
+    <wsdl:part name="parameters" element="tns:remStudentByIDResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helperUpdate">
+    <wsdl:part name="parameters" element="tns:helperUpdate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enrollHelper">
+    <wsdl:part name="parameters" element="tns:enrollHelper">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SAXException">
+    <wsdl:part name="SAXException" element="tns:SAXException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helperUpdateResponse">
+    <wsdl:part name="parameters" element="tns:helperUpdateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enrollHelperResponse">
+    <wsdl:part name="parameters" element="tns:enrollHelperResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enrollStudentResponse">
+    <wsdl:part name="parameters" element="tns:enrollStudentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IOException">
+    <wsdl:part name="IOException" element="tns:IOException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addHelperResponse">
+    <wsdl:part name="parameters" element="tns:addHelperResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeStudent">
+    <wsdl:part name="parameters" element="tns:removeStudent">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initializeResponse">
+    <wsdl:part name="parameters" element="tns:initializeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remStudentByID">
+    <wsdl:part name="parameters" element="tns:remStudentByID">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addHelper">
+    <wsdl:part name="parameters" element="tns:addHelper">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enrollStudent">
+    <wsdl:part name="parameters" element="tns:enrollStudent">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addStudentResponse">
+    <wsdl:part name="parameters" element="tns:addStudentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchStudentResponse">
+    <wsdl:part name="parameters" element="tns:searchStudentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeStudentResponse">
+    <wsdl:part name="parameters" element="tns:removeStudentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ParserConfigurationException">
+    <wsdl:part name="ParserConfigurationException" element="tns:ParserConfigurationException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initialize">
+    <wsdl:part name="parameters" element="tns:initialize">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="University">
+    <wsdl:operation name="searchStudent">
+      <wsdl:input name="searchStudent" message="tns:searchStudent">
+    </wsdl:input>
+      <wsdl:output name="searchStudentResponse" message="tns:searchStudentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStudent">
+      <wsdl:input name="updateStudent" message="tns:updateStudent">
+    </wsdl:input>
+      <wsdl:output name="updateStudentResponse" message="tns:updateStudentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeStudent">
+      <wsdl:input name="removeStudent" message="tns:removeStudent">
+    </wsdl:input>
+      <wsdl:output name="removeStudentResponse" message="tns:removeStudentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addStudent">
+      <wsdl:input name="addStudent" message="tns:addStudent">
+    </wsdl:input>
+      <wsdl:output name="addStudentResponse" message="tns:addStudentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="helperUpdate">
+      <wsdl:input name="helperUpdate" message="tns:helperUpdate">
+    </wsdl:input>
+      <wsdl:output name="helperUpdateResponse" message="tns:helperUpdateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="remStudentByID">
+      <wsdl:input name="remStudentByID" message="tns:remStudentByID">
+    </wsdl:input>
+      <wsdl:output name="remStudentByIDResponse" message="tns:remStudentByIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addHelper">
+      <wsdl:input name="addHelper" message="tns:addHelper">
+    </wsdl:input>
+      <wsdl:output name="addHelperResponse" message="tns:addHelperResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enrollHelper">
+      <wsdl:input name="enrollHelper" message="tns:enrollHelper">
+    </wsdl:input>
+      <wsdl:output name="enrollHelperResponse" message="tns:enrollHelperResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enrollStudent">
+      <wsdl:input name="enrollStudent" message="tns:enrollStudent">
+    </wsdl:input>
+      <wsdl:output name="enrollStudentResponse" message="tns:enrollStudentResponse">
+    </wsdl:output>
+      <wsdl:fault name="IOException" message="tns:IOException">
+    </wsdl:fault>
+      <wsdl:fault name="ParserConfigurationException" message="tns:ParserConfigurationException">
+    </wsdl:fault>
+      <wsdl:fault name="SAXException" message="tns:SAXException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="initialize">
+      <wsdl:input name="initialize" message="tns:initialize">
+    </wsdl:input>
+      <wsdl:output name="initializeResponse" message="tns:initializeResponse">
+    </wsdl:output>
+      <wsdl:fault name="ParserConfigurationException" message="tns:ParserConfigurationException">
+    </wsdl:fault>
+      <wsdl:fault name="IOException" message="tns:IOException">
+    </wsdl:fault>
+      <wsdl:fault name="SAXException" message="tns:SAXException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UniversityServiceSoapBinding" type="tns:University">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="searchStudent">
+      <soap:operation soapAction="urn:SearchStudent" style="document"/>
+      <wsdl:input name="searchStudent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchStudentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStudent">
+      <soap:operation soapAction="urn:UpdateStudent" style="document"/>
+      <wsdl:input name="updateStudent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStudentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeStudent">
+      <soap:operation soapAction="urn:RemoveStudent" style="document"/>
+      <wsdl:input name="removeStudent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeStudentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addStudent">
+      <soap:operation soapAction="urn:AddStudent" style="document"/>
+      <wsdl:input name="addStudent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addStudentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="helperUpdate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="helperUpdate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="helperUpdateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="remStudentByID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="remStudentByID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="remStudentByIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addHelper">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addHelper">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addHelperResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enrollHelper">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="enrollHelper">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="enrollHelperResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enrollStudent">
+      <soap:operation soapAction="urn:EnrollStudent" style="document"/>
+      <wsdl:input name="enrollStudent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="enrollStudentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="IOException">
+        <soap:fault name="IOException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ParserConfigurationException">
+        <soap:fault name="ParserConfigurationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SAXException">
+        <soap:fault name="SAXException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="initialize">
+      <soap:operation soapAction="urn:Initialize" style="document"/>
+      <wsdl:input name="initialize">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initializeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ParserConfigurationException">
+        <soap:fault name="ParserConfigurationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IOException">
+        <soap:fault name="IOException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SAXException">
+        <soap:fault name="SAXException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UniversityService">
+    <wsdl:port name="UniversityPort" binding="tns:UniversityServiceSoapBinding">
+      <soap:address location="http://localhost:8080/Quiz1WS/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

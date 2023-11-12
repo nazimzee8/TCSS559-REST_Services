@@ -1,0 +1,12 @@
+{
+"Alternatives":  ["Honda Civic", "Toyota Camry", "Honda Accord", "Toyota Corolla", "Chevrolet Equinox"],
+"Attributes": ["Price", "Gas", "Efficiency", "Aesthetics", "Miles"],
+"Weights": [0.05, 0.20, 0.35, 0.15, 0.25],
+"Entries": [[10000, 30, 30, 1, 100000],
+		[15000, 40, 22, 2, 125000],
+		[18000, 23, 17, 3, 80000],
+		[22000, 27, 27, 4, 135000],
+		[33000, 32, 23, 5, 145000]],
+"Type": ["True", "True", "True", "True", "True"],
+"Classification":  ["Minimum", "Maximum", "Maximum", "Maximum", "Minimum"]
+}

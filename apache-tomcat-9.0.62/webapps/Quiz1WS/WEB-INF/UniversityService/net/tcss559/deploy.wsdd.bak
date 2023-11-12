@@ -1,0 +1,55 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from UniversityService WSDL service -->
+
+  <service name="University" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://tcss559.net"/>
+      <parameter name="wsdlServiceElement" value="UniversityService"/>
+      <parameter name="schemaUnqualified" value="http://tcss559.net,http://xml.apache.org/xml-soap"/>
+      <parameter name="wsdlServicePort" value="University"/>
+      <parameter name="className" value="net.tcss559.UniversitySoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="University"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="updateStudent" qname="operNS:updateStudent" xmlns:operNS="http://tcss559.net" returnQName="updateStudentReturn" returnType="rtns:Student" xmlns:rtns="http://tcss559.net" soapAction="" >
+        <parameter qname="studentID" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="credits" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="grade" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="removeStudent" qname="operNS:removeStudent" xmlns:operNS="http://tcss559.net" returnQName="removeStudentReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="studentID" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="enrollStudent" qname="operNS:enrollStudent" xmlns:operNS="http://tcss559.net" returnQName="enrollStudentReturn" returnType="rtns:Map" xmlns:rtns="http://xml.apache.org/xml-soap" soapAction="" >
+        <parameter qname="name" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="studentID" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="searchStudent" qname="operNS:searchStudent" xmlns:operNS="http://tcss559.net" returnQName="searchStudentReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="studentID" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addStudent" qname="operNS:addStudent" xmlns:operNS="http://tcss559.net" returnQName="addStudentReturn" returnType="rtns:Map" xmlns:rtns="http://xml.apache.org/xml-soap" soapAction="" >
+        <parameter qname="name" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="studentID" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="credits" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="gpa" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="addStudent searchStudent updateStudent removeStudent enrollStudent"/>
+
+      <typeMapping
+        xmlns:ns="http://tcss559.net"
+        qname="ns:Student"
+        type="java:net.tcss559.Student"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+</deployment>

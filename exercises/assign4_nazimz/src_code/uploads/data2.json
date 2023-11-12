@@ -1,0 +1,9 @@
+{
+"Alternatives":  ["Honda Civic", "Toyota Camry", "Chevrolet Equinox"],
+"Attributes": ["Price", "Gas", "Miles"],
+"Entries": [[35000, 40, 200000],
+		[20000, 20, 100000],
+		[23000, 30, 175000]],
+"Type": ["True", "True", "True"],
+"Classification":  ["Minimum", "Maximum", "Minimum"]
+}

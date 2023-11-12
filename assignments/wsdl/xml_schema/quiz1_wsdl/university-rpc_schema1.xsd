@@ -1,0 +1,23 @@
+<xs:schema xmlns="http://tcss559.net/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tcss559.net/" version="1.0">
+  <xs:complexType name="student">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="SAXException" type="SAXException"/>
+  <xs:complexType name="SAXException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ParserConfigurationException" type="ParserConfigurationException"/>
+  <xs:complexType name="ParserConfigurationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IOException" type="IOException"/>
+  <xs:complexType name="IOException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
